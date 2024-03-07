@@ -9,10 +9,10 @@ recognition.interimResults = true;
 recognition.maxAlternatives = 1;
 
 // Obtain it from your Wit.ai app's Settings page
-const CLIENT_TOKEN = "<REPLACE WITH YOUR CLIENT TOKEN>";
+const CLIENT_TOKEN = "VRDQ7IKUK42PCVHIW66COAPRJNXFKJ7J";
 
 // Set your wake word
-const WAKE_WORD = "gizmo";
+const WAKE_WORD = "siri";
 
 // Component to set error message when the Wit.ai client token has not been updated
 AFRAME.registerComponent('error-message', {
@@ -28,14 +28,16 @@ AFRAME.registerComponent('error-message', {
 AFRAME.registerComponent('voice-command', {
   init: () => {
     recognition.start();
+    
     recognition.onresult = (event) => {
-      console.log(event.results)
+      
       let utteranceList = event.results;
       let latestUtterance = utteranceList[utteranceList.length-1];
       let speechRecognition = latestUtterance[latestUtterance.length-1];
   
       // Update text object with speech recognition transcription
       let transcript  = speechRecognition.transcript.toLowerCase();
+
       let textEl = document.querySelector('#text-object');
       textEl.setAttribute("text", `value:${transcript}`);
 
@@ -49,6 +51,7 @@ AFRAME.registerComponent('voice-command', {
         
         // Extract the utterance from the wake word
         let utterance = transcript.split(`hey ${WAKE_WORD}`)[1];
+        
 
         // Send the user's utterance to Wit.ai API for NLU inferencing
         fetch(`https://api.wit.ai/message?v=20210414&q=${utterance}`, {
