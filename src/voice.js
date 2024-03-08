@@ -9,10 +9,10 @@ recognition.interimResults = true;
 recognition.maxAlternatives = 1;
 
 // Obtain it from your Wit.ai app's Settings page
-const CLIENT_TOKEN = "VRDQ7IKUK42PCVHIW66COAPRJNXFKJ7J";
+const CLIENT_TOKEN = "4NAW7FY3RCT2I7CN44TUKEAKWJJ5WACK";
 
 // Set your wake word
-const WAKE_WORD = "siri";
+const WAKE_WORD = "kumar";
 
 // Component to set error message when the Wit.ai client token has not been updated
 AFRAME.registerComponent('error-message', {
